@@ -1,0 +1,38 @@
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.empty-state-message {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.empty-state-action {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: 2px solid var(--border-bronze);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    180deg,
+    var(--bg-tertiary) 0%,
+    var(--bg-secondary) 50%,
+    var(--bg-primary) 100%
+  );
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Cinzel', 'Georgia', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-metal);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  min-height: 50px;
+}
+
+.empty-state-action:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-metal), 0 0 8px var(--shadow-gold);
+}
