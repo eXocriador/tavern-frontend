@@ -143,6 +143,79 @@
   gap: var(--spacing-md);
 }
 
+.settings-description {
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.email-input-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.email-input {
+  flex: 1;
+  background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-secondary) 100%);
+  border: 2px solid var(--border-bronze);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  box-shadow: var(--shadow-debossed);
+  transition: all var(--transition-base);
+  border-radius: var(--radius-sm);
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-debossed), 0 0 0 3px rgba(212, 175, 55, 0.2), var(--shadow-glow);
+}
+
+.email-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.btn-save-email {
+  background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+  border: 2px solid var(--border-bronze);
+  color: var(--text-primary);
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Cinzel', 'Georgia', serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-metal);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.btn-save-email:hover:not(:disabled) {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-metal), var(--shadow-glow);
+}
+
+.btn-save-email:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.email-error {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: var(--spacing-sm);
+}
+
+.email-success {
+  color: var(--accent-gold);
+  font-size: 0.8rem;
+  margin-top: var(--spacing-sm);
+}
+
 .password-input-group {
   display: flex;
   flex-direction: column;

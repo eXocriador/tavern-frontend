@@ -1,106 +1,59 @@
 .instance-card {
-  background: linear-gradient(
-    135deg,
-    var(--bg-panel) 0%,
-    var(--bg-tertiary) 50%,
-    var(--bg-secondary) 100%
-  );
-  padding: var(--spacing-sm);
+  background: var(--bg-tertiary);
+  padding: var(--spacing-md);
   border-radius: var(--radius-md);
   margin-bottom: var(--spacing-sm);
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  box-shadow: var(--shadow-panel);
+  gap: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-base);
-  border: 2px solid var(--border-bronze);
+  border: 1px solid var(--border-subtle);
   position: relative;
   width: 100%;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
 }
 
 .instance-card:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-metal), var(--shadow-glow);
-  border-color: var(--border-gold);
+  border-color: var(--border-bronze);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
-.instance-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.instance-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: var(--radius-md);
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0));
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity var(--transition-base);
-}
-
-.instance-card:hover::after {
-  opacity: 1;
+.instance-card:active {
+  transform: translateY(0);
 }
 
 .instance-card.visited {
-  border-left: 4px solid var(--border-gold);
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.12) 0%, var(--bg-panel) 4px);
-  box-shadow:
-    var(--shadow-metal),
-    0 0 8px var(--shadow-gold);
+  border-left: 3px solid var(--accent-gold);
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.06) 0%, var(--bg-tertiary) 20%);
 }
 
 .instance-card.visited:hover {
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, var(--bg-panel) 4px);
-  box-shadow: var(--shadow-metal), var(--shadow-glow);
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, var(--bg-tertiary) 20%);
 }
 
 .instance-info {
   flex: 1 1 auto;
-  position: relative;
-  z-index: 1;
   min-width: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
 }
 
 .instance-info h3 {
-  color: var(--accent-gold);
+  color: var(--text-primary);
   margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  font-size: 0.95rem;
+  font-weight: 600;
   font-family: 'Cinzel', 'Georgia', serif;
-  line-height: 1.2;
-  white-space: normal;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.instance-card.visited .instance-info h3 {
+  color: var(--accent-gold);
 }
 
 .instance-actions {

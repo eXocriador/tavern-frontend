@@ -2,16 +2,15 @@
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
-  min-height: calc(100vh - 80px);
-  padding-bottom: calc(80px + var(--safe-area-bottom));
-  padding-top: calc(var(--spacing-lg) + var(--safe-area-top));
+  min-height: 100vh;
+  padding-bottom: calc(70px + var(--safe-area-bottom));
   box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
   .app {
-    min-height: 100vh;
     padding-bottom: 0;
+    padding-top: 56px; /* Header height */
   }
 }
 

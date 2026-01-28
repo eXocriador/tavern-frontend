@@ -3,7 +3,16 @@ import { BottomNav, Header } from './components/layout';
 import { ErrorBoundary } from './components/ui';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
-import { Dashboard, Profile, Register, Settings, Statistics } from './pages';
+import {
+  Dashboard,
+  ForgotPassword,
+  Login,
+  Profile,
+  Register,
+  SetPassword,
+  Settings,
+  Statistics,
+} from './pages';
 import './App.css';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -15,7 +24,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   }
 
   if (!user) {
-    return <Navigate to="/register" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return (
@@ -30,7 +39,13 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 const AppRoutes = () => {
   return (
     <Routes>
+      {/* Public routes */}
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/set-password" element={<SetPassword />} />
+
+      {/* Protected routes */}
       <Route
         path="/"
         element={

@@ -11,20 +11,16 @@
 }
 
 .login-panel {
-  background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-tertiary) 50%, var(--bg-secondary) 100%);
-  border: 2px solid var(--border-bronze);
-  box-shadow: var(--shadow-panel);
+  background: linear-gradient(160deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-bronze);
+  box-shadow: var(--shadow-lg);
   position: relative;
   padding: var(--spacing-xl);
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
   z-index: 1;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   transition: all var(--transition-base);
-}
-
-.login-panel:hover {
-  box-shadow: var(--shadow-panel), 0 0 20px rgba(212, 175, 55, 0.1);
 }
 
 .login-panel::before {
@@ -33,30 +29,26 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
   pointer-events: none;
-  border-radius: inherit;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .login-header {
   text-align: center;
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  border-bottom: 2px solid var(--border-bronze);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .login-header h1 {
   color: var(--accent-gold);
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-shadow:
-    2px 2px 4px rgba(0, 0, 0, 0.8),
-    0 0 10px var(--shadow-gold);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   margin: 0 0 var(--spacing-sm) 0;
   font-family: 'Cinzel', 'Georgia', serif;
 }

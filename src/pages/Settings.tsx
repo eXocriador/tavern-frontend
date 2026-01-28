@@ -35,6 +35,12 @@ const Settings = () => {
   const [resetLoading, setResetLoading] = useState(false);
   const [codeSent, setCodeSent] = useState(false);
 
+  // Email state
+  const [email, setEmail] = useState('');
+  const [emailSaving, setEmailSaving] = useState(false);
+  const [emailSuccess, setEmailSuccess] = useState('');
+  const [emailError, setEmailError] = useState('');
+
   useEffect(() => {
     loadSettings();
   }, []);
@@ -47,6 +53,9 @@ const Settings = () => {
       }
       if (profile.language) {
         setLanguage(profile.language as 'en' | 'ua' | 'ru');
+      }
+      if (profile.email) {
+        setEmail(profile.email);
       }
     } catch (error) {
       console.error('Error loading settings:', error);
@@ -79,6 +88,29 @@ const Settings = () => {
   const handleLogout = () => {
     logout();
     setIsLogoutModalOpen(false);
+  };
+
+  const handleEmailSave = async () => {
+    setEmailError('');
+    setEmailSuccess('');
+
+    // Basic email validation
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError(t('settings.emailErrors.invalid'));
+      return;
+    }
+
+    setEmailSaving(true);
+
+    try {
+      await updateProfile({ email: email || null });
+      setEmailSuccess(t('settings.emailSaved'));
+      setTimeout(() => setEmailSuccess(''), 3000);
+    } catch (error: any) {
+      setEmailError(error.response?.data?.error || t('settings.emailErrors.saveFailed'));
+    } finally {
+      setEmailSaving(false);
+    }
   };
 
   const handleChangePassword = async (e: React.FormEvent) => {
@@ -226,6 +258,29 @@ const Settings = () => {
                   onChange={handleTimezoneChange}
                   disabled={saving}
                 />
+              </div>
+
+              <div className="settings-section">
+                <h3>{t('settings.email')}</h3>
+                <p className="settings-description">{t('settings.emailDescription')}</p>
+                <div className="email-input-group">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t('settings.emailPlaceholder')}
+                    className="email-input"
+                  />
+                  <button
+                    onClick={handleEmailSave}
+                    className="btn-save-email"
+                    disabled={emailSaving}
+                  >
+                    {emailSaving ? t('common.saving') : t('common.save')}
+                  </button>
+                </div>
+                {emailError && <div className="email-error">{emailError}</div>}
+                {emailSuccess && <div className="email-success">{emailSuccess}</div>}
               </div>
 
               <div className="settings-section">

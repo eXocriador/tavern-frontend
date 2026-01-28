@@ -5,6 +5,7 @@ export interface Profile {
   username?: string;
   firstName?: string;
   lastName?: string;
+  email?: string;
   characterName?: string;
   characterLevel?: number;
   timezone?: string;
@@ -22,6 +23,7 @@ export const updateProfile = async (data: {
   characterLevel?: number;
   timezone?: string;
   language?: string;
+  email?: string | null;
 }): Promise<Profile> => {
   const response = await apiClient.put('/profile', data);
   return response.data;
