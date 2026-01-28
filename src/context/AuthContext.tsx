@@ -40,8 +40,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await apiClient.post('/auth/telegram', authData);
       const userData = response.data.user;
+      const accessToken = response.data.accessToken;
+
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
+
+      if (accessToken) {
+        localStorage.setItem('accessToken', accessToken);
+      }
     } catch (error) {
       console.error('Login error:', error);
       throw error;
@@ -51,6 +57,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
   };
 
   const updateUser = (updatedUser: User) => {

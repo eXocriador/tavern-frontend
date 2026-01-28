@@ -36,6 +36,11 @@ const Register = () => {
 
       if (response.data?.success) {
         localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        if (response.data.accessToken) {
+          localStorage.setItem('accessToken', response.data.accessToken);
+        }
+
         window.location.href = '/';
       } else {
         setError(t('register.errors.registrationFailed'));

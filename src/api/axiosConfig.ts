@@ -7,14 +7,9 @@ const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use(config => {
-  const storedUser = localStorage.getItem('user');
-  if (storedUser) {
-    try {
-      const user = JSON.parse(storedUser);
-      if (user.telegramId) {
-        config.headers['x-telegram-id'] = user.telegramId.toString();
-      }
-    } catch {}
+  const token = localStorage.getItem('accessToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });

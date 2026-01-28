@@ -85,6 +85,11 @@ const Login = () => {
 
         if (response.data?.success && response.data?.user) {
           localStorage.setItem('user', JSON.stringify(response.data.user));
+
+          if (response.data.accessToken) {
+            localStorage.setItem('accessToken', response.data.accessToken);
+          }
+
           window.location.replace('/');
         } else {
           setIsTelegramWebApp(false);
@@ -115,6 +120,11 @@ const Login = () => {
 
       if (response.data?.success && response.data?.user) {
         localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        if (response.data.accessToken) {
+          localStorage.setItem('accessToken', response.data.accessToken);
+        }
+
         window.location.href = '/';
       } else {
         setError(t('login.error'));
